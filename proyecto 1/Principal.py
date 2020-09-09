@@ -1,9 +1,22 @@
 from tkinter import *
 
+class Interfaz:
+    def __init__(self,ventana):
+        self.ventana=ventana
+        self.ventana.title("[OLC1]Proyecto1")
+        
+        self.menu=Menu()
+
+Ventana_principal=Tk()
+Principal=Interfaz(Ventana_principal)
+Ventana_principal.mainloop()
+
+
+
+'''
 raiz=Tk() #inicia la ventana
 #-------------------------------Ventana
 raiz.title("Principal")
-raiz.iconbitmap("image\icono.ico")
 #--------------------------------Menu de navegacion------------------------
 menu=Menu(raiz)
 new_item = Menu(menu)
@@ -26,3 +39,5 @@ contenedor1.config(width="900", height="600")
 
 
 raiz.mainloop() #bucle infinito para que la ventana este en ejecucion continua
+
+##'''
