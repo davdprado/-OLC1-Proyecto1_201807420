@@ -17,3 +17,4 @@ def crearRH(listax,ruta):
         archivo.writelines("<TH bgcolor=" + "\"#00e676\"" + ";>" + error.Descripcion + "</TH>\n ")
         archivo.writelines("</TR>\n ")
     archivo.close()
+    

@@ -1,6 +1,7 @@
 from Error import Error
 from Token import Token
 
+
 listaToken=list()
 listaError=list()
 columna=0
@@ -76,7 +77,7 @@ def EstadosIniciales(caracter):
 
 
 
-def AnalizadorLexicoJS(txtcont):
+def AnalizadorLexicoJS(txtcont,consola):
     lexema=""
     global columna
     global fila
