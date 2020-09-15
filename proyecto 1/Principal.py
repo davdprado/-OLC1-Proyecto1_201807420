@@ -2,11 +2,13 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import scrolledtext
 from Analizadorjs import AnalizadorLexicoJS
+from Analizadorjs import listaError
+from Analizadorjs import listaToken
 
 
 archi=""
 def abrir_archivo():
-    archivo_abierto=filedialog.askopenfilename( title='Abrir Archivo', initialdir='/home/roberto/Escritorio/Entradas',filetypes=(("css files",".css"),("all files",".*")))
+    archivo_abierto=filedialog.askopenfilename( title='Abrir Archivo', initialdir='/home/roberto/Escritorio/Entradas',filetypes=(("all files",".*"),("css files",".css")))
     ruta=archivo_abierto
     if ruta !="":
         arch=open(ruta,'r')
