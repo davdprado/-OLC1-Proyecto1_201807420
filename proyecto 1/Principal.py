@@ -89,7 +89,22 @@ def Nuevo_archivo():
     BorrarDatos()
 
 def Guardar_archivo():
-    guardar_archivo=filedialog.asksaveasfile(title='Guardar Archivo', initialdir=RutaP,defaultextension=".html",filetypes=(("html files",'.html'),("css files",".css")))
+    guardar_archivo=filedialog.asksaveasfile(title='Guardar Archivo', initialdir=RutaP,defaultextension=".html",filetypes=(("JS files",'.js'),("html files",'.html'),("css files",".css")))
+    contenido=text1.get("1.0","end-1c")
+    if(extension=='.js'):
+        archi=open(RutaP+'scrip.js','w')
+        archi.writelines(contenido)
+        archi.close()
+    elif(extension=='.css'):
+        archi=open(RutaP+'estils.css','w')
+        archi.writelines(contenido)
+        archi.close()
+    elif (extension=='.html'):
+        archi=open(RutaP+'index.html','w')
+        archi.writelines(contenido)
+        archi.close()
+
+
 
     
 def Analizar():
@@ -126,10 +141,10 @@ new_item=Menu(menu)
 new_item.add_command(label='Nuevo',command=Nuevo_archivo)
 new_item.add_command(label='Abrir',command=abrir_archivo)
 new_item.add_command(label='Guardar',command=Guardar_archivo)
-new_item.add_command(label='Guardar Como...',comman=Graficar)
+new_item.add_command(label='Guardar Como...',command=Guardar_archivo)
 new_item.add_command(label='Analizar',command=Analizar)
 new_item.add_separator()
-new_item.add_command(label='Salir')
+new_item.add_command(label='Salir',command=cerrar)
 menu.add_cascade(label='Archivo',menu=new_item)
 menu.add_cascade(label='Ayuda')
 Ventana_principal.config(menu=menu)
