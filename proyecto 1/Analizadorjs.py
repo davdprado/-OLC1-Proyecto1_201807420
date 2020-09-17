@@ -54,7 +54,6 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
             listaTransicion.append(NuevaT)
         return 15
     elif caracter=='(':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'(',0,11):
             NuevaT=Transiciones("(",0,11)
             listaTransicion.append(NuevaT)
@@ -63,26 +62,22 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
         if existeT(listaTransicion,')',0,14):
             NuevaT=Transiciones(")",0,14)
             listaTransicion.append(NuevaT)
-        consola.insert(END,caracter+" simbolo \n")
         return 0
     elif caracter=='&':
         NuevaT=Transiciones("&",0,22)
         listaTransicion.append(NuevaT)
         return 22
     elif caracter=='{':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'{',0,25):
             NuevaT=Transiciones("{",0,25)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter=='}':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'}',0,26):
             NuevaT=Transiciones("}",0,26)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter==':':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,':',0,27):
             NuevaT=Transiciones(":",0,27)
             listaTransicion.append(NuevaT)
@@ -92,25 +87,21 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
         listaTransicion.append(NuevaT)
         return 20
     elif caracter=='=':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'=',0,28):
             NuevaT=Transiciones("=",0,28)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter=='<':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'<',0,29):
             NuevaT=Transiciones("<",0,29)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter=='>':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'>',0,30):
             NuevaT=Transiciones(">",0,30)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter=='+':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'+',0,31):
             NuevaT=Transiciones("+",0,31)
             listaTransicion.append(NuevaT)
@@ -119,19 +110,16 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
         if existeT(listaTransicion,'*',0,32):
             NuevaT=Transiciones("*",0,32)
             listaTransicion.append(NuevaT)
-        consola.insert(END,caracter+" simbolo \n")
         return 0
     elif caracter==';':
         if existeT(listaTransicion,';',0,33):
             NuevaT=Transiciones(";",0,33)
             listaTransicion.append(NuevaT)
-        consola.insert(END,caracter+" simbolo \n")
         return 0
     elif caracter=='-':
         if existeT(listaTransicion,'-',0,34):
             NuevaT=Transiciones("-",0,34)
             listaTransicion.append(NuevaT)
-        consola.insert(END,caracter+" simbolo \n")
         return 0
     elif caracter=='/':
         if existeT(listaTransicion,"/",0,6):
@@ -139,19 +127,16 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
             listaTransicion.append(NuevaT)
         return 5
     elif caracter=='!':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'!',0,35):
             NuevaT=Transiciones("!",0,35)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter==',':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,',',0,36):
             NuevaT=Transiciones(",",0,36)
             listaTransicion.append(NuevaT)
         return 0
     elif caracter=='.':
-        consola.insert(END,caracter+" simbolo \n")
         if existeT(listaTransicion,'.',0,37):
             NuevaT=Transiciones(".",0,37)
             listaTransicion.append(NuevaT)
@@ -159,7 +144,6 @@ def EstadosIniciales(est,caracter,idError,fila,columna,consola):
     elif (caracter=='\n' or caracter==' ' or caracter=='\t'):
         return 0
     else:
-        consola.insert(END,caracter+" No pertenece \n")
         NuevoError=Error(idError,fila,columna,"El Caracter "+caracter+" no pertenece al lenguaje")
         idError=idError+1
         listaError.append(NuevoError)
@@ -206,14 +190,12 @@ def AnalizadorLexicoJS(txtcont,consola):
                 estado=1
             else:
                 if es_Reservada(lexema):
-                    consola.insert(END,lexema+" Reservada \n")
                     NuevoToken=Token(conta,fila,columna,lexema)
                     conta=conta+1
                     lexema=""
                     listaToken.append(NuevoToken)
                 else: #aqui puedo poner para que solo sean las conjunciones como . + - = ! / *
                     NuevoToken=Token(conta,fila,columna,lexema)
-                    consola.insert(END,lexema+" Identificador \n")
                     conta=conta+1
                     lexema=""
                     listaToken.append(NuevoToken)
@@ -228,7 +210,6 @@ def AnalizadorLexicoJS(txtcont,consola):
                 estado=2
             else:
                 if caracter!='.':
-                    consola.insert(END,lexema+" numero \n")
                     lexema=""
                     estado=EstadosIniciales(estado,caracter,idError,fila,columna, consola)
                 else:
@@ -253,7 +234,6 @@ def AnalizadorLexicoJS(txtcont,consola):
                     listaTransicion.append(NuevaT)
                 estado=4
             else:
-                consola.insert(END,lexema+" decimal \n")
                 lexema=""
                 estado=EstadosIniciales(estado,caracter,idError,fila,columna, consola)
                 NuevoToken=Token(conta,fila,columna,lexema)
@@ -281,7 +261,6 @@ def AnalizadorLexicoJS(txtcont,consola):
                 NuevoToken=Token(conta,fila,columna,lexema)
                 conta=conta+1
                 listaToken.append(NuevoToken)
-                consola.insert(END,lexema+" signo / solo \n")
                 lexema=""
                 estado=EstadosIniciales(estado,caracter,idError,fila,columna, consola)
         elif estado==7:
@@ -294,7 +273,6 @@ def AnalizadorLexicoJS(txtcont,consola):
                 NuevoToken=Token(conta,fila,columna,lexema)
                 conta=conta+1
                 listaToken.append(NuevoToken)
-                consola.insert(END,lexema+" comentario de linea \n")
                 lexema=""
                 estado=0
         elif estado==8:
@@ -321,7 +299,6 @@ def AnalizadorLexicoJS(txtcont,consola):
                 if existeT(listaTransicion,"/",9,10):
                     NuevaT=Transiciones("/",9,10)
                     listaTransicion.append(NuevaT)
-                consola.insert(END,lexema+" comentario largo \n")
                 print(lexema)
                 lexema=""
                 estado=0
@@ -346,7 +323,6 @@ def AnalizadorLexicoJS(txtcont,consola):
             NuevoToken=Token(conta,fila,columna,lexema)
             conta=conta+1
             listaToken.append(NuevoToken)
-            consola.insert(END,lexema+" cadena \n")
             lexema=""
             estado=EstadosIniciales(estado,caracter,idError,fila,columna, consola)
         
@@ -371,7 +347,6 @@ def AnalizadorLexicoJS(txtcont,consola):
             NuevoToken=Token(conta,fila,columna,lexema)
             conta=conta+1
             listaToken.append(NuevoToken)
-            consola.insert(END,lexema+" cadena \n")
             lexema=""
             estado=EstadosIniciales(estado,caracter,idError,fila,columna, consola)
         elif estado==20:
@@ -384,12 +359,10 @@ def AnalizadorLexicoJS(txtcont,consola):
                     if existeT(listaTransicion,"||",20,21):
                         NuevaT=Transiciones("||",20,21)
                         listaTransicion.append(NuevaT)
-                    consola.insert(END,lexema+" doble | \n")
                     lexema=""
                     estado=0
             else:
                 if caracter!=' ' or caracter!='\n':
-                    consola.insert(END,caracter+" No pertenece \n")
                     NuevoError=Error(idError,fila,columna,"El Caracter "+lexema+" no pertenece al lenguaje")
                     idError=idError+1
                     listaError.append(NuevoError)
@@ -408,12 +381,10 @@ def AnalizadorLexicoJS(txtcont,consola):
                     if existeT(listaTransicion,"&&",22,23):
                         NuevaT=Transiciones("&&",22,23)
                         listaTransicion.append(NuevaT)
-                    consola.insert(END,lexema+" doble & \n")
                     lexema=""
                     estado=0
             else:
                 if caracter!=' ' or caracter!='\n':
-                    consola.insert(END,caracter+" No pertenece \n")
                     NuevoError=Error(idError,fila,columna,"El Caracter "+lexema+" no pertenece al lenguaje")
                     idError=idError+1
                     listaError.append(NuevoError)

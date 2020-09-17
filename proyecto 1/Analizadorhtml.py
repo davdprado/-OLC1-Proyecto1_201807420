@@ -144,12 +144,13 @@ def AnalisisHTML(txt1,consola):
                 lexema=""
                 estado=Estados_iniciales(caracter,fila,columna,consola,idError)
         elif estado==9:
-            if caracter!='-':
+            if lexema[-2]=='-' and lexema[-1]=='-':
+                lexema=lexema+caracter
+                estado=10
+            elif caracter!='-':
                 lexema=lexema+caracter
             else:
-                if lexema[-2]=='-' and lexema[-1]=='-':
-                    lexema=lexema+caracter
-                    estado=10
+                lexema=lexema+caracter
         elif estado==10:
             if caracter!='>':
                 lexema=lexema+caracter

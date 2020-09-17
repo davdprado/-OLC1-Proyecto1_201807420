@@ -1,4 +1,4 @@
-def crearRH(listax,ruta):
+def crearRH(listax):
     archivo=open("errores.html",'w')
     archivo.writelines("<style>TABLE{border: 1px solid #64ffda;font-family:Century Gothic;} TH{color:black;} h1{font-family:Century Gothic;}</style> \n")
     archivo.writelines("<Center><h1>Listado de Errores</h1></Center>\n ")
